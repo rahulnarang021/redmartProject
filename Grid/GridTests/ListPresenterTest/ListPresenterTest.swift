@@ -47,6 +47,6 @@ class ListPresenterTest: XCTestCase {
         presenter.cellDisplayedAtIndexPath(IndexPath(item: 30, section: 0))
         XCTAssertEqual(presenter.getNumberOfItems(0), 30, "Productlist should contain 30 products")
         presenter.cellDisplayedAtIndexPath(IndexPath(item: 0, section: 1))
-        XCTAssertEqual(presenter.getNumberOfItems(0), 60, "Productlist should contain 60 products")
+        XCTAssertEqual(presenter.getNumberOfItems(0), 60, "Product list should contain 60 products")
     }
 }

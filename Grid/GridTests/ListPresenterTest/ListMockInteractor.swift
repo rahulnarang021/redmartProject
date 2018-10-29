@@ -12,10 +12,18 @@ import UIKit
 class ListMockInteractor: NSObject, ListInteractorInput {
     var presenter: ListInteractorOutput?
     let bundle: Bundle
+    var productList: [Product]  = [] {
+        didSet {
+            presenter?.productListDidFetch(products: productList)
+        }
+    }
+    
     init(bundle: Bundle) {
         self.bundle = bundle
     }
     func fetchListOfAllProducts(page: Int) {
-        presenter?.productListDidFetch(products: TestUtility.getProuctList(bundle: bundle))
+        if let products = TestUtility.getProuctList(bundle: bundle) {
+            productList.append(contentsOf: products)
+        }
     }
 }

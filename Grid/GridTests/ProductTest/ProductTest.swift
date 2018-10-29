@@ -32,6 +32,6 @@ class ProductTest: XCTestCase {
     func testProduct() {
         XCTAssertEqual(product.title, "Cadbury Dairy Milk Packed With Picnic", "Product title should is wrongly parsed")
         XCTAssertEqual(product.desc, "Cadbury Dairy Milk Picnic contains Dairy milk chocolate with vanilla flavoured creme, smooth flowing caramel and peanut pieces.", "Product description is wrongly parsed")
-        XCTAssertEqual(product.getDisplayedPrice(), "5.2", "Product price is wrongly parsed")
+        XCTAssertEqual(product.getDisplayedPrice(), "$5.2", "Product price is wrongly parsed")
     }
 }
