@@ -12,7 +12,7 @@ class ListInteractor: NSObject {
     
     var apiWrapper: ProductListAPIInput?
     weak var presenter: ListInteractorOutput?
-    var productList: [Product]? {
+    var productList: [Product]? { // took list here, so that presenter will have only viewModels(not having in this project)
         didSet {
             presenter?.productListDidFetch(products: productList)
         }
@@ -34,7 +34,10 @@ extension ListInteractor: ListInteractorInput {
 
 extension ListInteractor: ProductListAPIOutput {
     func productListDidFetch(products: [Product]?, error: Error?) {
-        if let productArray = products {
+        if let error = error {
+            presenter?.productListDidFail(error: error)
+        }
+        else if let productArray = products {
             if self.productList == nil {
                 self.productList = Array(productArray)
             }
@@ -43,7 +46,7 @@ extension ListInteractor: ProductListAPIOutput {
             }
         }
         else {
-            presenter?.productListDidFail(error: error)
+            presenter?.productListDidFetch(products: nil)
         }
     }
 }

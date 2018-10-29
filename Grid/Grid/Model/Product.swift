@@ -44,7 +44,7 @@ class Product: NSObject {
     }
     func getDisplayedPrice() -> String? {
         if let price = self.price {
-            return "$ \(price)"
+            return "$\(price)"
         }
         return nil
     }

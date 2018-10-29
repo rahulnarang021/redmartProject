@@ -37,6 +37,7 @@ class ListPresenterTest: XCTestCase {
         presenter.viewLoaded()
         XCTAssertEqual(presenter.productArray.count, 30, "Productlist should contain 30 products")
         XCTAssertEqual(presenter.getNumberOfItems(0), 30, "Productlist should contain 30 products")
+        XCTAssertEqual(presenter.numberOfSections(), 2, "There should be two sections in collectionView")
         XCTAssertNotNil(presenter.getProductAtIndexPath(IndexPath(item: 0, section: 0)), "Product should be nil")
         XCTAssertEqual(presenter.getNumberOfItems(1), 1, "Productlist should contain 30 products")
         XCTAssertEqual(presenter.shouldShowLoaderCell(IndexPath(item: 0, section: 0)), false, "Should not show loader")

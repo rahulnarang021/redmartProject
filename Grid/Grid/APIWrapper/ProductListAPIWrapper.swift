@@ -27,7 +27,7 @@ class ProductListAPIWrapper: NSObject, ProductListAPIInput {
                 if let productDictionaryArray: [[String: Any?]] = responseDictionary["products"] as? [[String: Any?]] {
                      productArray = []
                     for productDictionary: [String: Any?] in productDictionaryArray {
-                        let productObject: Product = Product(response: productDictionary)
+                        let productObject: Product = Product(response: productDictionary) // product parsing
                         productArray?.append(productObject)
                     }
                 }

@@ -14,13 +14,14 @@ class ListPresenter: NSObject {
     var router: ListRouterInput?
     
     var isAPIInProgress: Bool = false // to stop calling api everytime user scroll when api is being in progress
+    var allProductsDidFetch = false
     lazy var productArray: [Product] = { // fetched products
         return []
     }()
     
     // MARK: - Interactor Methods
     func callAPIToFetchProducts() {
-        if !isAPIInProgress {
+        if !isAPIInProgress && !allProductsDidFetch {
             isAPIInProgress = true
             interactor?.fetchListOfAllProducts(page: (productArray.count)/itemsPerPage)
         }
@@ -74,7 +75,8 @@ extension ListPresenter: ListInteractorOutput {
         guard let products = products else {
             return
         }
-        productArray.append(contentsOf: products)
+        allProductsDidFetch = (products.count == 0)
+        productArray = Array(products)
         view?.reloadView()
     }
     

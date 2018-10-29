@@ -17,7 +17,6 @@ class CommonUtility: NSObject {
         let alert = UIAlertController(title: titleMessage, message: message, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-        
         UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true)
     }
     
